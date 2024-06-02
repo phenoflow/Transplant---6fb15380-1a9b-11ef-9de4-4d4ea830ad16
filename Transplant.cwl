@@ -110,8 +110,8 @@ steps:
       potentialCases:
         id: potentialCases
         source: transplant-donor---primary/output
-  transplant-vheart---primary:
-    run: transplant-vheart---primary.cwl
+  transplant-heart---primary:
+    run: transplant-heart---primary.cwl
     out:
     - output
     in:
@@ -121,8 +121,8 @@ steps:
       potentialCases:
         id: potentialCases
         source: transplant-kidney---primary/output
-  tubulointerstitial-transplant---primary:
-    run: tubulointerstitial-transplant---primary.cwl
+  other-transplant---primary:
+    run: other-transplant---primary.cwl
     out:
     - output
     in:
@@ -131,9 +131,9 @@ steps:
         source: inputModule12
       potentialCases:
         id: potentialCases
-        source: transplant-vheart---primary/output
-  transplant-system---primary:
-    run: transplant-system---primary.cwl
+        source: transplant-heart---primary/output
+  tubulointerstitial-transplant---primary:
+    run: tubulointerstitial-transplant---primary.cwl
     out:
     - output
     in:
@@ -142,9 +142,9 @@ steps:
         source: inputModule13
       potentialCases:
         id: potentialCases
-        source: tubulointerstitial-transplant---primary/output
-  transplant-pancrea---primary:
-    run: transplant-pancrea---primary.cwl
+        source: other-transplant---primary/output
+  transplant-blame---primary:
+    run: transplant-blame---primary.cwl
     out:
     - output
     in:
@@ -153,7 +153,40 @@ steps:
         source: inputModule14
       potentialCases:
         id: potentialCases
+        source: tubulointerstitial-transplant---primary/output
+  transplant-system---primary:
+    run: transplant-system---primary.cwl
+    out:
+    - output
+    in:
+      inputModule:
+        id: inputModule
+        source: inputModule15
+      potentialCases:
+        id: potentialCases
+        source: transplant-blame---primary/output
+  transplant-specified---primary:
+    run: transplant-specified---primary.cwl
+    out:
+    - output
+    in:
+      inputModule:
+        id: inputModule
+        source: inputModule16
+      potentialCases:
+        id: potentialCases
         source: transplant-system---primary/output
+  transplant-pancrea---primary:
+    run: transplant-pancrea---primary.cwl
+    out:
+    - output
+    in:
+      inputModule:
+        id: inputModule
+        source: inputModule17
+      potentialCases:
+        id: potentialCases
+        source: transplant-specified---primary/output
   peripheral-transplant---primary:
     run: peripheral-transplant---primary.cwl
     out:
@@ -161,7 +194,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule15
+        source: inputModule18
       potentialCases:
         id: potentialCases
         source: transplant-pancrea---primary/output
@@ -172,7 +205,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule16
+        source: inputModule19
       potentialCases:
         id: potentialCases
         source: peripheral-transplant---primary/output
@@ -183,7 +216,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule17
+        source: inputModule20
       potentialCases:
         id: potentialCases
         source: transplant-rejection---primary/output
@@ -194,7 +227,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule18
+        source: inputModule21
       potentialCases:
         id: potentialCases
         source: transplant-associated---primary/output
@@ -205,7 +238,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule19
+        source: inputModule22
       potentialCases:
         id: potentialCases
         source: acute-transplant---primary/output
@@ -216,32 +249,10 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule20
+        source: inputModule23
       potentialCases:
         id: potentialCases
         source: transplant-grade---primary/output
-  transplant-blame---primary:
-    run: transplant-blame---primary.cwl
-    out:
-    - output
-    in:
-      inputModule:
-        id: inputModule
-        source: inputModule21
-      potentialCases:
-        id: potentialCases
-        source: transplant-examination---primary/output
-  transplant-specified---primary:
-    run: transplant-specified---primary.cwl
-    out:
-    - output
-    in:
-      inputModule:
-        id: inputModule
-        source: inputModule22
-      potentialCases:
-        id: potentialCases
-        source: transplant-blame---primary/output
   transplant-failure---primary:
     run: transplant-failure---primary.cwl
     out:
@@ -249,10 +260,10 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule23
+        source: inputModule24
       potentialCases:
         id: potentialCases
-        source: transplant-specified---primary/output
+        source: transplant-examination---primary/output
   transplant-tissue---primary:
     run: transplant-tissue---primary.cwl
     out:
@@ -260,7 +271,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule24
+        source: inputModule25
       potentialCases:
         id: potentialCases
         source: transplant-failure---primary/output
@@ -271,7 +282,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule25
+        source: inputModule26
       potentialCases:
         id: potentialCases
         source: transplant-tissue---primary/output
@@ -282,7 +293,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule26
+        source: inputModule27
       potentialCases:
         id: potentialCases
         source: orthotopic-transplant---primary/output
@@ -293,7 +304,7 @@ steps:
     in:
       inputModule:
         id: inputModule
-        source: inputModule27
+        source: inputModule28
       potentialCases:
         id: potentialCases
         source: transplant-complication---primary/output
@@ -409,6 +420,10 @@ inputs:
     type: File
   inputModule27:
     id: inputModule27
+    doc: Python implementation unit
+    type: File
+  inputModule28:
+    id: inputModule28
     doc: Python implementation unit
     type: File
 outputs:
