@@ -2,7 +2,7 @@
 
 import sys, csv, re
 
-codes = [{"code":"7B00211","system":"readv2"},{"code":"7B00300","system":"readv2"},{"code":"7B00200","system":"readv2"},{"code":"7B00212","system":"readv2"}];
+codes = [{"code":"7B00211","system":"readv2"},{"code":"7B00300","system":"readv2"},{"code":"7B00200","system":"readv2"},{"code":"7B00400","system":"readv2"},{"code":"7B00212","system":"readv2"}];
 REQUIRED_CODES = 1;
 with open(sys.argv[1], 'r') as file_in, open('transplant-potential-cases.csv', 'w', newline='') as file_out:
     csv_reader = csv.DictReader(file_in)
